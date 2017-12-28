@@ -12,11 +12,15 @@ This project was developed using Java 8, Spring Boot, Spring Data Redis, Eclipse
 ## Prerequisites
 
 The integration tests within this project require a Redis instance running on localhost. Testing was done on Windows 10 Professional with Docker installed. The Docker container is started using these commands from a Windows Command prompt:
+
 `docker pull redis`
+
 `docker run --name some-redis –p 6379:6379 -d redis`
 
 When finished, the Docker container is terminated using these commands:
+
 `docker stop some-redis`
+
 `docker rm some-redis`
 
 ## Build
