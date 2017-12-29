@@ -23,6 +23,8 @@ When finished, the Docker container is terminated using these commands:
 
 `docker rm some-redis`
 
+Also, to avoid possible problems make sure that the Docker settings use a fixed DNS Server of `8.8.8.8`
+
 ## Build
 
 Run `mvn clean install` to build the project and run the supplied integration tests. The build artifacts will be stored in the `target/` directory. 

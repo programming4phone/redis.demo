@@ -29,7 +29,9 @@ public class Application {
 	@Bean
 	public RedisConnectionFactory redisCF() {
 		JedisConnectionFactory cf = new JedisConnectionFactory();
+		                                                                                                                                                 
 		cf.setHostName("127.0.0.1");
+		//cf.setHostName("10.0.75.1"); // ipconfig use Ip addr of DockerNAT
 		cf.setPort(6379);
 		return cf;
 	}

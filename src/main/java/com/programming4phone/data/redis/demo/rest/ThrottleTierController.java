@@ -63,6 +63,7 @@ public class ThrottleTierController {
 	 * @see com.programming4phone.data.redis.demo.entity.UsageTierEnum
 	 */
 	@RequestMapping(method=RequestMethod.PUT, consumes="application/json")
+	@ResponseStatus(HttpStatus.CREATED)
 	public void addTier(@RequestBody Tier tier) {
 		tierDao.addTier(tier);
 	}

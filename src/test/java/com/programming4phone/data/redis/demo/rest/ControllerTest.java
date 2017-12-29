@@ -218,6 +218,7 @@ public class ControllerTest {
 	}
 	
 	private void createTiers() {
+		ResponseEntity<Void> voidResponseEntity;
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		
@@ -225,25 +226,32 @@ public class ControllerTest {
 		
 		Tier tier1 = new Tier().setSpeed(FAST_SPEED).setThreshhold(-1L);
 		requestUpdate = new HttpEntity<>(tier1, headers);
-		restTemplate.exchange(TIER_BASE_URL, HttpMethod.PUT, requestUpdate, Void.class);
+		voidResponseEntity = restTemplate.exchange(TIER_BASE_URL, HttpMethod.PUT, requestUpdate, Void.class);
+		assertThat(voidResponseEntity.getStatusCode(), equalTo(HttpStatus.CREATED));
 		
 		Tier tier2 = new Tier().setSpeed(MEDIUM_SPEED).setThreshhold(100L);
 		requestUpdate = new HttpEntity<>(tier2, headers);
-		restTemplate.exchange(TIER_BASE_URL, HttpMethod.PUT, requestUpdate, Void.class);
+		voidResponseEntity = restTemplate.exchange(TIER_BASE_URL, HttpMethod.PUT, requestUpdate, Void.class);
+		assertThat(voidResponseEntity.getStatusCode(), equalTo(HttpStatus.CREATED));
 		
 		Tier tier3 = new Tier().setSpeed("SLOW").setThreshhold(200L);
 		requestUpdate = new HttpEntity<>(tier3, headers);
-		restTemplate.exchange(TIER_BASE_URL, HttpMethod.PUT, requestUpdate, Void.class);		
+		voidResponseEntity = restTemplate.exchange(TIER_BASE_URL, HttpMethod.PUT, requestUpdate, Void.class);
+		assertThat(voidResponseEntity.getStatusCode(), equalTo(HttpStatus.CREATED));
 	}
 	
 	private void deleteTiers() {
+		ResponseEntity<Void> voidResponseEntity;
 		Map<String, String> params = new HashMap<String, String>();
 	    params.put("speed", FAST_SPEED);
-		restTemplate.exchange(TIER_DELETE_URL, HttpMethod.DELETE, null, Void.class,params);
+	    voidResponseEntity = restTemplate.exchange(TIER_DELETE_URL, HttpMethod.DELETE, null, Void.class,params);
+	    assertThat(voidResponseEntity.getStatusCode(), equalTo(HttpStatus.OK));
 		params.put("speed", MEDIUM_SPEED);
-		restTemplate.exchange(TIER_DELETE_URL, HttpMethod.DELETE, null, Void.class,params);
+		voidResponseEntity = restTemplate.exchange(TIER_DELETE_URL, HttpMethod.DELETE, null, Void.class,params);
+		assertThat(voidResponseEntity.getStatusCode(), equalTo(HttpStatus.OK));
 		params.put("speed", SLOW_SPEED);
-		restTemplate.exchange(TIER_DELETE_URL, HttpMethod.DELETE, null, Void.class,params);
+		voidResponseEntity = restTemplate.exchange(TIER_DELETE_URL, HttpMethod.DELETE, null, Void.class,params);
+		assertThat(voidResponseEntity.getStatusCode(), equalTo(HttpStatus.OK));
 	}
 
 }
