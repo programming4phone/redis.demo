@@ -2,6 +2,7 @@ package com.programming4phone.data.redis.demo.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,7 @@ import com.programming4phone.data.redis.demo.dao.UsageDao;
 import com.programming4phone.data.redis.demo.entity.CustomerUsage;
 import com.programming4phone.data.redis.demo.error.InvalidUsageAmountException;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/throttle/usage")
 public class ThrottleUsageController {
