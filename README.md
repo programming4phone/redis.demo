@@ -3,7 +3,7 @@
 This project demonstrates how to use Spring Data Redis. 
 The web services contained in this project simulate a simple version of throttling bandwidth speed based on usage for an imaginary *unlimited* data plan. 
 
-This data plan has 3 bandwidth service tier speeds FAST, MEDIUM, and SLOW. Each tier has an assigned data usage threshold. As data usage increases for a account holder, bandwidth speed is throttled downwards as the usage amount crosses each threshold. Data usage is reset to zero periodically based on how long each account is consuming data.
+This data plan has 3 bandwidth service tier speeds FAST, MEDIUM, and SLOW. Each tier has an assigned data usage threshold. As data usage increases for an account holder, bandwidth speed is throttled downwards as the usage amount crosses each threshold. Data usage is reset to zero periodically based on how long each account is consuming data.
 
 ## Development stack
 
@@ -29,4 +29,5 @@ Also, to avoid possible problems make sure that the Docker settings use a fixed 
 
 Run `mvn clean install` to build the project and run the supplied integration tests. The build artifacts will be stored in the `target/` directory. 
 
-
+## Running the Spring Boot container
+Change to the source code directory and run `java -jar target/redis.demo-0.0.1-SNAPSHOT.jar`.
